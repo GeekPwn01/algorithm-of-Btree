@@ -108,6 +108,21 @@ public class TreeOfChain
 		
 	}
 	
+	Bnode temp;
+	//前序遍历，交换左右子树,后续遍历也可以，但是中序遍历不行
+		public void preOrder2(Bnode tree)
+		{
+			if(tree!=null)
+			{
+				temp=tree.lchild;
+				tree.lchild=tree.rchild;
+				tree.rchild=temp;
+				preOrder2(tree.lchild);
+				preOrder2(tree.rchild);
+			}
+			
+		}
+	
 	//前序遍历，非递归(栈)
 	public void preOder1(Bnode tree)
 	{
@@ -151,6 +166,7 @@ public class TreeOfChain
 			
 		}
 		
+		
 		//中序遍历，非递归(栈)
 		public void midOder1(Bnode tree)
 		{
@@ -192,6 +208,23 @@ public class TreeOfChain
 			}
 			
 		}
+		
+		//后序遍历，交换左右子树
+		public void posOrder2(Bnode tree)
+		{
+			if(tree!=null)
+			{
+				posOrder2(tree.lchild);
+				posOrder2(tree.rchild);
+				temp=tree.lchild;
+				tree.lchild=tree.rchild;
+				tree.rchild=temp;
+			}
+			
+		}
+		
+
+		
 		
 		//后序遍历，非递归(栈)
 		public void posOder1(Bnode tree)
