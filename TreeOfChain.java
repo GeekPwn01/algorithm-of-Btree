@@ -129,7 +129,7 @@ public class TreeOfChain
 		System.out.print("\r\n");//并无实际意义
 		Stack <Bnode> stack=new Stack<Bnode>();
 		
-		Bnode node1=tree;//保护原二叉树
+		Bnode node1=tree;//保护原二叉树，这个关点是错误的，因为对象时引用的
 		
 		//下面用迭代方法代替了递归，显然这也是常规方法了，递归与迭代相互转化
 		while (node1!=null || stack.size()>0)
@@ -152,7 +152,35 @@ public class TreeOfChain
 		System.out.print("\r\n");//并无实际意义
 	}
 	
-	
+	//前序遍历，非递归(栈),交换左右子树
+		public void preOder3(Bnode tree)
+		{
+			Stack <Bnode> stack=new Stack<Bnode>();
+			
+			Bnode node1=tree;//保护原二叉树，这个关点是错误的，因为对象时引用的
+			
+			//下面用迭代方法代替了递归，显然这也是常规方法了，递归与迭代相互转化
+			while (node1!=null || stack.size()>0)
+			{
+				while(node1!=null)
+				{
+					temp=node1.lchild;
+					node1.lchild=node1.rchild;
+					node1.rchild=temp;
+					
+					stack.push(node1);//根指针进栈
+					node1=node1.lchild;//移向左子树
+				}
+				
+				if(stack.size()>0)//如果还有根指针，不能用while
+				{
+					node1=stack.pop();//取出根指针
+					node1=node1.rchild;//移向右子树
+				}
+				
+			}
+			
+		}
 	
 	//中序遍历，递归
 		public void midOrder(Bnode tree)
@@ -173,7 +201,7 @@ public class TreeOfChain
 			System.out.print("\r\n");//并无实际意义
 			Stack <Bnode> stack=new Stack<Bnode>();
 			
-			Bnode node1=tree;//保护原二叉树
+			Bnode node1=tree;//保护原二叉树，这个关点是错误的，因为对象时引用的
 			
 			//下面用迭代方法代替了递归，显然这也是常规方法了，递归与迭代相互转化
 			while (node1!=null || stack.size()>0)
@@ -232,8 +260,8 @@ public class TreeOfChain
 			System.out.print("\r\n");//并无实际意义
 			Stack <Bnode> stack=new Stack<Bnode>();
 			
-			Bnode node1=tree;//保护原二叉树
-			Bnode node2=tree;//保护原二叉树
+			Bnode node1=tree;//保护原二叉树，这个关点是错误的，因为对象时引用的
+			Bnode node2=tree;//保护原二叉树，这个关点是错误的，因为对象时引用的
 			
 			//下面用迭代方法代替了递归，显然这也是常规方法了，递归与迭代相互转化
 			while (node1!=null)
